@@ -30,6 +30,13 @@ def main():
         # player1.update(dt)
         updatable.update(dt)
         # now check for collisions
+        #   first, bullets...
+        for a in asteroids:
+            for s in shots:
+                if a.collision(s):
+                    a.split()
+                    s.kill()
+        #   now, players...
         for a in asteroids:
             if a.collision(player1):
                 print("Game over")
